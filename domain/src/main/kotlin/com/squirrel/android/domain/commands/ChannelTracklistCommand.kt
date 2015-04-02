@@ -14,18 +14,13 @@ import com.squirrel.android.domain.model.Tracklist
 class ChannelTracklistCommand(val channel: Channel,
                               val socialRepository: ISocialRepository,
                               val metadataRepository: IMetadataRepository,
-                              //val bus: Bus,
                               val cachedTracks: IDatabase): IObservableCommand<Tracklist> {
 
     override fun observe(): Observable<Tracklist> {
         return socialRepository.getTracklist(channel)
                 .flatMapIterable({ it.getTracks() })
                 .compose(CachedTrackTransformer(cachedTracks))
-                //.compose(TrackTopTagsTransformer(metadataRepository, bus))
                 .toList()
                 .map({ Tracklist(it, channel) })
-
-                /*.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())*/
     }
 }

@@ -6,6 +6,7 @@ import com.squirrel.android.domain.repositories.IAuthRepository
 import com.squirrel.android.domain.repositories.ISocialRepository
 import com.squirrel.android.domain.model.SimilarityResult
 import com.squirrel.android.domain.LOGD
+import com.squirrel.android.domain.MIN_GROUP_TRACKS
 
 /**
  * Calculates [SimilarityResult] for every [Group] of the current [User].
@@ -20,13 +21,10 @@ public open class GroupsSimilarityCommand(val authRepository: IAuthRepository,
         val user = authRepository.getCurrentUser()
         val userTracklist = socialRepository.getTracklist(user)
         val groupTracklists = socialRepository.getGroups(user)
-                .take(200)
                 .flatMap({
-                    LOGD.d("")
                     socialRepository.getTracklist(it)
                 })
-                .filter { it.getTracks().size() > 300 }
-                //.subscribeOn(Schedulers.io())
+                .filter { it.getTracks().size() > MIN_GROUP_TRACKS }
 
         return similarities(userTracklist, groupTracklists)
     }

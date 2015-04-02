@@ -10,3 +10,5 @@ public val CACHED_TRACK_KEY_PREFIX: String = "cachedTrack"
 
 public val CACHED_TRACKLIST_TITLE: String = "Cached tracks"
 
+public val MIN_GROUP_TRACKS: Int = 300
+

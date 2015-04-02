@@ -19,9 +19,7 @@ public open class FriendsSimilarityCommand(val authRepository: IAuthRepository,
         val user = authRepository.getCurrentUser()
         val userTracklist = socialRepository.getTracklist(user)
         val friendTracklists = socialRepository.getFriends(user)
-                .take(100)
                 .flatMap({ socialRepository.getTracklist(it) })
-                //.subscribeOn(Schedulers.io())
 
         return similarities(userTracklist, friendTracklists)
     }
