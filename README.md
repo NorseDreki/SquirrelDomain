@@ -1,4 +1,4 @@
-# SquirrelDomain
+# SquirrelDomain [![Build Status](https://travis-ci.org/upelsin/SquirrelDomain.svg)](https://travis-ci.org/upelsin/SquirrelDomain)
 An example of programming work done for Android using TDD and built with "Ports and Adapters" architecture and RxJava.
 
 >**Note:**
@@ -11,4 +11,4 @@ The repository contains only a part of real project; its purpose is to showcase 
 
 - The project heavily uses [**RxJava**](https://github.com/ReactiveX/RxJava) as a primary gateway to Functional Reactive Programming. All data streams are obtained and manipulated using RxJava. There is also an example of using custom Transformers to encapsulate repeatable transformation tasks.
 
-- Most of the development is done using the [**Kotlin**](kotlinlang.org) language which is a modern JVM language. It is less verbose, supports closures (which makes it easy to deal with RxJava), type inference, ensures null safety, supports data classes, etc. Not only does this allow to introduce less bugs but also greatly improves speed of development.
+- Most of the development is done using the [**Kotlin**](http://kotlinlang.org) language which is a modern JVM language. It is less verbose, supports closures (which makes it easy to deal with RxJava), type inference, ensures null safety, supports data classes, etc. Not only does this allow to introduce less bugs but also greatly improves speed of development.
